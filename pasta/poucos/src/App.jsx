@@ -1,25 +1,49 @@
 import { useState } from 'react'
+import Todo from './component/todos';
+import TodoFormulario from './component/todoForm';
+
 
 function App() {
-  const [todos, setTodos] = useState([])
-  const [newTodo, setNewTodo] = useState({})
-function handleSubmit(e){
-  e.preventDefault();
-  //console.log(e);
-}
+  
 
+  const [todos, setTodos] = useState([
+      {text: "gosto de comer comidas",
+        isCompleted: false
+      },
+      {
+        text: "Learn about React",
+        isCompleted: false
+      },
+  
+  ])
+
+  const addTodo = text => {
+    const newTodos = [...todos, { text }];
+    setTodos(newTodos);
+  };
+  const completeTodo = index => {
+    const newTodos = [...todos];
+    newTodos[index].isCompleted = true;
+    setTodos(newTodos);
+  };
+  const removeTodo = index => {
+    const newTodos = [...todos];
+    newTodos.splice(index, 1);
+    setTodos(newTodos);
+  };
 
   return (
     <>
-    <form>
-      <label>
-        
-        <input type="date" name="color"></input>
-      </label>
-      <input type="text"  name="name"/>
-      <input type="submit" value="Enviar" onClick={(e)=>handleSubmit(e)}/>
-    </form>
-    oi
+    {todos.map((todo, index) => (
+          <Todo
+            key={index}
+            index={index}
+            todo={todo}
+            completeTodo={completeTodo}
+            removeTodo={removeTodo}
+          />
+        ))}
+    <TodoFormulario addTodo={addTodo} />
     </>
   )
 }
