@@ -18,7 +18,7 @@ function TodoFormulario  ({addTodo}){
               value={value}
               onChange={e => setValue(e.target.value)}
             />
-            <input type="submit"/>
+            <input type="submit" value="click to add"/>
           </form>
         );
       }
