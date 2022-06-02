@@ -1,51 +1,23 @@
 import { useState } from 'react'
-import Todo from './component/todos';
-import TodoFormulario from './component/todoForm';
-
-
+import { Lista } from "./component/lista"
+import { NewTodo } from "./component/newTodo"
 function App() {
-  
+  const[todo, setTodo] = useState({
+    conteudo: "aa",
+    feito: false,
+    data: new Date()
+});
 
-  const [todos, setTodos] = useState([
-      {text: "gosto de comer comidas",
-        isCompleted: false
-      },
-      {
-        text: "Learn about React",
-        isCompleted: false
-      },
-  
-  ])
-
-  const addTodo = text => {
-    const newTodos = [...todos, { text }];
-    setTodos(newTodos);
-  };
-  const completeTodo = index => {
-    const newTodos = [...todos];
-    newTodos[index].isCompleted = true;
-    setTodos(newTodos);
-  };
-  const removeTodo = index => {
-    const newTodos = [...todos];
-    newTodos.splice(index, 1);
-    setTodos(newTodos);
-  };
-
-  return (
+  return(
     <>
-    {todos.map((todo, index) => (
-          <Todo
-            key={index}
-            index={index}
-            todo={todo}
-            completeTodo={completeTodo}
-            removeTodo={removeTodo}
-          />
-        ))}
-    <TodoFormulario addTodo={addTodo} />
+
+  <NewTodo mudarTodo={setTodo}/>
+  <Lista lista={todo}/>
+
     </>
-  )
+  );
+
+  
 }
 
 export default App
