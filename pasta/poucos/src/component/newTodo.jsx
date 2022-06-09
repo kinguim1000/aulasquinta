@@ -6,14 +6,21 @@ export function NewTodo({mudarTodo}){
         feito: false,
         data: new Date()
     });
-    return(
-        <div>
-        <input type="text" onChange={(event)=>setMakeTodo({ 
-            conteudo: event.target.value,
+    function mudanca(evento){
+        setMakeTodo({ 
+            conteudo: evento.target.value,
             feito: false,
             data: new Date()
 
-        })}>
+        })
+        mudarTodo(makeTodo)
+    }
+    return(
+        <div>
+        <input type="text" onChange={(event)=>
+        mudanca(event)
+        
+        }>
         </input>
         <button onClick={()=>mudarTodo(makeTodo)}>salvae</button>
         
