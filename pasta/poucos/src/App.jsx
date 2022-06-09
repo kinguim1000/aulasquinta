@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { v4 } from 'uuid'
 import { Lista } from "./component/lista"
 import { NewTodo } from "./component/newTodo"
 function App() {
@@ -7,10 +8,10 @@ function App() {
     conteudo: "aa",
     feito: false,
     data: new Date(),
-    id: 0
+    id: v4()
 });
 const principal = [todo];
-console.log(principal[0]);
+console.log(todo);
   return(
     <>
 
