@@ -8,15 +8,15 @@ function App() {
     conteudo: "aa",
     feito: false,
     data: new Date(),
-    id: v4()
+    id: 1
 });
 const principal = [todo];
 console.log(todo);
   return(
     <>
 
-  <NewTodo mudarTodo={setTodo}/>
-  <Lista lista={principal}/>
+  <NewTodo mudarTodo={setTodo} todoatual={todo}/>
+  <Lista lista={todo}/>
 
     </>
   );

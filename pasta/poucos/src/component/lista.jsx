@@ -3,6 +3,6 @@ export function Lista(props){
     
 
     return(
-        <h1>{props.lista[0].conteudo}</h1>
+        <h1>{props.lista.conteudo}</h1>
     );
 }

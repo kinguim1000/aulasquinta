@@ -1,19 +1,20 @@
 import { useState } from "react";
-export function NewTodo({mudarTodo}){ 
+export function NewTodo({mudarTodo, todoatual}){ 
 
     const[makeTodo, setMakeTodo] = useState({
         conteudo: "",
         feito: false,
         data: new Date()
     });
+
     function mudanca(evento){
         setMakeTodo({ 
-            conteudo: evento.target.value,
-            feito: false,
-            data: new Date()
-
+            ... todoatual,
+            conteudo1: evento.target.value,
+            feito1: false,
+            data1: new Date(),
+            id1: 2
         })
-        mudarTodo(makeTodo)
     }
     return(
         <div>
@@ -22,7 +23,7 @@ export function NewTodo({mudarTodo}){
         
         }>
         </input>
-        <button onClick={()=>mudarTodo(makeTodo)}>salvae</button>
+        <button onClick={()=>mudarTodo(makeTodo)}>adicionar</button>
         
         </div>
     );
