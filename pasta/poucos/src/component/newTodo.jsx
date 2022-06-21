@@ -1,32 +1,30 @@
 import { useState } from "react";
-export function NewTodo({mudarTodo, todoatual}){ 
-
-    const[makeTodo, setMakeTodo] = useState({
-        conteudo: "",
+export function NewTodo({ mudarTodo, todoatual }) {
+  const [makeTodo, setMakeTodo] = useState({
+    ...todoatual,
+  });
+  const [contagem, setContagem] = useState(2);
+  function mudanca(evento) {
+    setMakeTodo([
+      ...todoatual,
+      {
+        conteudo: evento.target.value,
         feito: false,
-        data: new Date()
-    });
-
-    function mudanca(evento){
-        setMakeTodo({ 
-            ... todoatual,
-            conteudo1: evento.target.value,
-            feito1: false,
-            data1: new Date(),
-            id1: 2
-        })
+        data: new Date(),
+        id: contagem,
+      },
+    ]);
+  }
+  function click() {
+    if (todoatual.conteudo != makeTodo.conteudo) {
+      setContagem(contagem + 1);
+      mudarTodo(makeTodo);
     }
-    return(
-        <div>
-        <input type="text" onChange={(event)=>
-        mudanca(event)
-        
-        }>
-        </input>
-        <button onClick={()=>mudarTodo(makeTodo)}>adicionar</button>
-        
-        </div>
-    );
-
-    
+  }
+  return (
+    <div>
+      <input type="text" onChange={(event) => mudanca(event)}></input>
+      <button onClick={() => click()}>adicionar</button>
+    </div>
+  );
 }
