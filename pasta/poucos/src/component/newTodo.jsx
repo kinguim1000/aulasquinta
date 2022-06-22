@@ -16,10 +16,14 @@ export function NewTodo({ mudarTodo, todoatual }) {
     ]);
   }
   function click() {
-    if (todoatual.conteudo != makeTodo.conteudo) {
-      setContagem(contagem + 1);
-      mudarTodo(makeTodo);
+    for (let i in todoatual) {
+      console.log(makeTodo);
+      if (todoatual[i].conteudo == makeTodo[todoatual.length].conteudo) {
+        return console.log("item já adicionado");
+      }
     }
+    setContagem(contagem + 1);
+    mudarTodo(makeTodo);
   }
   return (
     <div>
