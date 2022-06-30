@@ -1,21 +1,31 @@
 import { useState } from "react";
-import { Lista } from "./component/lista";
 import { NewTodo } from "./component/newTodo";
+import { Todo } from "./component/Todo";
+import "./styles.css";
 function App() {
   const [todo, setTodo] = useState([
     {
-      conteudo: "a",
+      conteudo: "aperte para remover ->",
       feito: false,
       data: new Date(),
-      id: 1,
+      id: 0,
     },
   ]);
-  console.log(todo);
   return (
     <>
       <NewTodo mudarTodo={setTodo} todoatual={todo} />
 
-      <Lista lista={todo} />
+      {todo.map((el) => {
+        return (
+          <Todo
+            todo={el}
+            todoCompleto={todo}
+            key={el.id}
+            id={el.id}
+            mudarTodo={setTodo}
+          />
+        );
+      })}
     </>
   );
 }

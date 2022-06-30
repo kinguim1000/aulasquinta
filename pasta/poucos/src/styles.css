@@ -1,0 +1,15 @@
+.tabela {
+  margin: auto;
+}
+.adicionar {
+  display: block;
+  text-align: center;
+  padding: 10px;
+}
+.content {
+  width: 300px;
+}
+.adicionar input {
+  width: 22%;
+  min-width: 320px;
+}

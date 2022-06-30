@@ -3,7 +3,7 @@ export function NewTodo({ mudarTodo, todoatual }) {
   const [makeTodo, setMakeTodo] = useState({
     ...todoatual,
   });
-  const [contagem, setContagem] = useState(2);
+  const [contagem, setContagem] = useState(1);
   function mudanca(evento) {
     setMakeTodo([
       ...todoatual,
@@ -16,17 +16,18 @@ export function NewTodo({ mudarTodo, todoatual }) {
     ]);
   }
   function click() {
+    console.log(makeTodo);
     for (let i in todoatual) {
-      console.log(makeTodo);
       if (todoatual[i].conteudo == makeTodo[todoatual.length].conteudo) {
-        return console.log("item já adicionado");
+        console.log("item já adicionado");
+        return;
       }
     }
     setContagem(contagem + 1);
     mudarTodo(makeTodo);
   }
   return (
-    <div>
+    <div className="adicionar">
       <input type="text" onChange={(event) => mudanca(event)}></input>
       <button onClick={() => click()}>adicionar</button>
     </div>
