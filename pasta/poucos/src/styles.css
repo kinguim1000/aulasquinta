@@ -13,3 +13,7 @@
   width: 22%;
   min-width: 320px;
 }
+.hour {
+  float: right;
+  color: grey;
+}

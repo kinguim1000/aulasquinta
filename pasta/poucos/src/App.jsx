@@ -1,8 +1,11 @@
 import { useState } from "react";
 import { NewTodo } from "./component/newTodo";
 import { Todo } from "./component/Todo";
+import { Save } from "./component/save";
 import "./styles.css";
 function App() {
+  const [cont, setCont] = useState(1);
+
   const [todo, setTodo] = useState([
     {
       conteudo: "aperte para remover ->",
@@ -11,9 +14,15 @@ function App() {
       id: 0,
     },
   ]);
+
   return (
     <>
-      <NewTodo mudarTodo={setTodo} todoatual={todo} />
+      <NewTodo
+        mudarTodo={setTodo}
+        todoatual={todo}
+        contagem={cont}
+        setContagem={setCont}
+      />
 
       {todo.map((el) => {
         return (
@@ -26,6 +35,12 @@ function App() {
           />
         );
       })}
+      <Save
+        todoatual={todo}
+        mudarTodo={setTodo}
+        contagem={cont}
+        setContagem={setCont}
+      />
     </>
   );
 }

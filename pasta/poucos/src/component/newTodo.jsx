@@ -1,9 +1,8 @@
 import { useState } from "react";
-export function NewTodo({ mudarTodo, todoatual }) {
+export function NewTodo({ mudarTodo, todoatual, contagem, setContagem }) {
   const [makeTodo, setMakeTodo] = useState({
     ...todoatual,
   });
-  const [contagem, setContagem] = useState(1);
   function mudanca(evento) {
     setMakeTodo([
       ...todoatual,
@@ -16,7 +15,6 @@ export function NewTodo({ mudarTodo, todoatual }) {
     ]);
   }
   function click() {
-    console.log(makeTodo);
     for (let i in todoatual) {
       if (todoatual[i].conteudo == makeTodo[todoatual.length].conteudo) {
         console.log("item já adicionado");
@@ -24,6 +22,8 @@ export function NewTodo({ mudarTodo, todoatual }) {
       }
     }
     setContagem(contagem + 1);
+    localStorage.setItem("todo", JSON.stringify(makeTodo));
+    localStorage.answer = JSON.stringify(contagem + 1);
     mudarTodo(makeTodo);
   }
   return (

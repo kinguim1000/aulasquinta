@@ -15,6 +15,7 @@ export function Todo(props) {
     anotherTodo.sort((a, b) => {
       return a.id - b.id;
     });
+
     props.mudarTodo(anotherTodo);
   }
   function remove() {
@@ -25,6 +26,7 @@ export function Todo(props) {
       return a.id - b.id;
     });
     props.mudarTodo([...anotherTodo]);
+    localStorage.setItem("todo", JSON.stringify([...anotherTodo]));
   }
   return (
     <table className="tabela">
