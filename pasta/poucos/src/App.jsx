@@ -9,12 +9,18 @@ function App() {
   const [todo, setTodo] = useState([
     {
       conteudo: "aperte para remover ->",
-      feito: false,
+      feito: true,
       data: new Date(),
       id: 0,
     },
   ]);
-
+  const [flag, setFlag] = useState(0);
+  if (localStorage.getItem("todo") !== null && flag == 0) {
+    setTodo(JSON.parse(localStorage.getItem("todo")));
+    setCont(JSON.parse(localStorage.answer));
+    console.log(JSON.parse(localStorage.getItem("todo")));
+    setFlag(1);
+  }
   return (
     <>
       <NewTodo

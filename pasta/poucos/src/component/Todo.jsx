@@ -15,7 +15,8 @@ export function Todo(props) {
     anotherTodo.sort((a, b) => {
       return a.id - b.id;
     });
-
+    localStorage.setItem("todo", JSON.stringify(anotherTodo));
+    console.log("saved");
     props.mudarTodo(anotherTodo);
   }
   function remove() {
@@ -26,6 +27,7 @@ export function Todo(props) {
       return a.id - b.id;
     });
     props.mudarTodo([...anotherTodo]);
+
     localStorage.setItem("todo", JSON.stringify([...anotherTodo]));
   }
   return (
@@ -35,7 +37,11 @@ export function Todo(props) {
           <h3>{props.todo.conteudo}</h3>
         </td>
         <td>
-          <input type="checkbox" onClick={clickFunc} />
+          <input
+            type="checkbox"
+            checked={props.todo.feito}
+            onClick={clickFunc}
+          />
         </td>
         <td>
           <input type="button" onClick={remove} value="remover" />

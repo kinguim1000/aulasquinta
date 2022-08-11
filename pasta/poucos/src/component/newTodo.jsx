@@ -23,7 +23,8 @@ export function NewTodo({ mudarTodo, todoatual, contagem, setContagem }) {
     }
     setContagem(contagem + 1);
     localStorage.setItem("todo", JSON.stringify(makeTodo));
-    localStorage.answer = JSON.stringify(contagem + 1);
+
+    localStorage.answer = JSON.stringify(contagem);
     mudarTodo(makeTodo);
   }
   return (

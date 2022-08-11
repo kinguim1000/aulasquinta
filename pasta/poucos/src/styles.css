@@ -17,3 +17,14 @@
   float: right;
   color: grey;
 }
+.button {
+  margin: 2px;
+  text-align: center;
+  border-color: #0d1217;
+  background-color: #22223b;
+  float: inline-end;
+}
+body {
+  background-color: #22223b;
+  color: white;
+}
